@@ -242,7 +242,9 @@ class TechInfoConfig(TechInfo, metaclass=abc.ABCMeta):
         res = self.config['resolution']
         if not unit_mode:
             width = int(round(width / res))
-
+        # I believe this one we need to change to account also for wiring length
+        # The spacing is calculated on lines 214-226 (_space_helper() function)
+        # TODO: Implement changes to reflect wire length also
         ans = self.get_min_space_unit(layer_type, width, same_color=same_color)
 
         if unit_mode:
